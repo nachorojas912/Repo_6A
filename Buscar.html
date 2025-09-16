@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar Usuario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .buscar-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Buscar Usuario</h1>
+
+  <div class="buscar-box">
+    <input type="text" id="buscarInput" placeholder="Ingrese el nombre de usuario">
+    <button onclick="buscarUsuario()">Buscar</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    // Lista simulada de usuarios (como si viniera de una base de datos)
+    const usuarios = ['Juan', 'María', 'Pedro', 'Lucía', 'Ana', 'Carlos', 'Sofía'];
+
+    function buscarUsuario() {
+      const input = document.getElementById('buscarInput').value.trim().toLowerCase();
+      const resultado = document.getElementById('resultado');
+
+      if (input === "") {
+        resultado.textContent = "Por favor ingrese un nombre.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      const encontrado = usuarios.find(usuario => usuario.toLowerCase() === input);
+
+      if (encontrado) {
+        resultado.textContent = `✅ Usuario "${encontrado}" encontrado.`;
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = `❌ Usuario "${input}" no encontrado.`;
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+ <p><a href="Index.html">Volver</a></p>
+
+</body>
+</html>
