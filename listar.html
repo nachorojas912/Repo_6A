@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .editar {
+            background-color: #0077cc;
+            color: white;
+        }
+        .eliminar {
+            background-color: #cc0000;
+            color: white;
+        }
+        .volver {
+            margin-top: 20px;
+            background-color: #555;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .amigos {
+            color: green;
+        }
+        .randoms {
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mis Listas de Personas</h1>
+
+    <h2 class="amigos">Amigos</h2>
+    <ul id="listaAmigos" class="amigos">
+        <li>María López 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+        <li>Carlos Méndez 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+        <li>Lucía Fernández 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+    </ul>
+
+    <h2 class="randoms">Personas Aleatorias</h2>
+    <ul id="listaRandoms" class="randoms">
+        <li>Julián Navarro 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+        <li>Erika Salvatierra 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+        <li>Tomás Villalba 
+            <span>
+                <button class="editar" onclick="editarNombre(this)">Editar</button>
+                <button class="eliminar" onclick="eliminarUsuario(this)">Eliminar</button>
+            </span>
+        </li>
+    </ul>
+
+    <button class="volver" onclick="volver()">Volver</button>
+
+    <script>
+        function editarNombre(boton) {
+            const li = boton.closest('li');
+            const nombreActual = li.firstChild.textContent.trim();
+            const nuevoNombre = prompt("Editar nombre:", nombreActual);
+            if (nuevoNombre && nuevoNombre.trim() !== "") {
+                li.firstChild.textContent = nuevoNombre + " ";
+            }
+        }
+
+        function eliminarUsuario(boton) {
+            const li = boton.closest('li');
+            if (confirm("¿Seguro que deseas eliminar a esta persona?")) {
+                li.remove();
+            }
+        }
+
+        function volver() {
+            window.location.href = "Index.html";
+        }
+    </script>
+</body>
+</html>
